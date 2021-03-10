@@ -1,7 +1,11 @@
+
 /*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
+    ____ ____  ____  _   _   _  ____  __ ____
+	 / ___|  _ \| __ )| \ | | | |/ /  \/  |  _ \
+	| |   | |_) |  _ \|  \| | | ' /| |\/| | |_) |
+	| |___|  _ <| |_) | |\  | | . \| |  | |  __/
+	 \____|_| \_\____/|_| \_| |_|\_\_|  |_|_|
+
  */
 
 #include <behaviors.dtsi>
@@ -14,40 +18,61 @@
 
 		default_layer {
 				// -----------------------------------------------------------------------------------------
-				// |  TAB  |  Q   |  W   |  E   |  R   |  T   |   Y   |  U    |  I   |  O   |   P   | BSPC  |
-				// |  ESC  |  A   |  S   |  D   |  F   |  G   |   H   |  J    |  K   |  L   |   ;   |  '    |
-				// | SHIFT |  Z   |  X   |  C   |  V   |  B   |   N   |  M    |  ,   |  .   |   /   |  RET  |
-				// | FN    | LGUI | LALT | LCTL | LOWR |     SPACE    |  RAIS | LARW | DARW | UARW  |  RARW |
+				// | ESC   |  Q   		|  W   |  E   |  R   |  T   |   Y   	|  U    |  I   |  O   |   P   | BSPC  |
+				// | CTRL  |  A   		|  S   |  D   |  F   |  G   |   H   	|  J    |  K   |  L   |   ;   |  '    |
+				// | SHIFT |  Z   		|  X   |  C   |  V   |  B   |   N   	|  M    |  ,   |  .   |   /   |  RET  |
+				// | CTRL  | NUMBERS 	| LGUI | LCTL | LALT |TH SPACE|TH BSPC| RETURN| LEFT | DOWN  |  UP | RIGHT
 			bindings = <
-				&kp TAB  &kp Q    &kp W &kp E &kp R &kp T  &kp Y   &kp U  &kp I    &kp O   &kp P    &kp BSPC
-				&kp ESC  &kp A    &kp S &kp D &kp F &kp G  &kp H   &kp J  &kp K    &kp L   &kp SEMI &kp SQT
-				&kp LSHFT &kp Z    &kp X &kp C &kp V &kp B  &kp N   &kp M  &kp COMMA &kp DOT &kp BSLH &kp RET
-				&trans   &kp LGUI &kp LALT &kp LCTRL &mo 1 &kp SPACE &trans &mo 2 &kp LEFT &kp DOWN &kp UP &kp RIGHT
+				&kp ESC  		&kp Q    		&kp W 			&kp F 			&kp P 		&kp B  					&kp J   				&kp L  		&kp U    	&kp Y   	&kp SEMI    	&kp EQUAL
+				&kp LCTRL  	&kp A    		&kp R 			&kp S 			&kp T 		&kp G  					&kp M   				&kp N  		&kp E    	&kp I   	&kp O 		&kp SQT
+				&kp LSHFT 	&kp Z    		&kp X 			&kp C 			&kp D 		&kp V  					&kp K   				&kp H  		&kp COMMA &kp DOT 	&kp BSLH 	&kp RET
+				&kp LCTRL  	&mo LGUI 	&kp NUMBERS 	&kp LCTRL 	&kp LALT	&lt LOWER SPACE	&lt RAISE BSPC	&kp RET		&kp LEFT 	&kp DOWN 	&kp UP 		&kp RIGHT
 			>;
 
 			sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
 		};
 
 		lower {
+			// -----------------------------------------------------------------------------------------
+			// | TAB   |  %   		|  !   |  @   |  $   |  --  |   ` 	 |  7    |  8   |  9   |   -   | \  |
+			// | CTRL  |  &   		|  :   |  ~   |  ^   |  --  |  HOME  |  4    |  5   |  6   | PGUP  |  ALT(\)    |
+			// | SHIFT |  --   		|  --  |  --  |  --  |  --  |  END	 |  1    |  2   |  3   | PGDN  |  RET  |
+			// | CTRL  |  -- 			|  --  |  --  |  --  | ____ |  LALT	 |  0		 |  . 	|	 =	 |  RET  | RIGHT
 			bindings = <
-				&kp LS(GRAVE) &kp LS(N1) &kp LS(N2) &kp LS(N3) &kp LS(N4) &kp LS(N5) &kp LS(N6) &kp LS(N7) &kp LS(N8) &kp LS(N9) &kp LS(N0) &kp DEL
-				&kp DEL &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp UNDER &kp PLUS &kp LT &kp GT &kp PIPE
-				&trans &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12 &kp LS(HASH) &kp LS(BSLH) &kp HOME &kp END &trans
-				&trans &trans &trans &trans &trans &trans &trans &mo 3 &kp C_NEXT &kp C_VOL_DN &kp C_VOL_UP &kp C_PP
+				&kp TAB  		&kp PRCNT 	&kp EXCL		&kp AT 			&kp DLLR 	&trans	&kp GRAVE &kp N7  &kp N8  	&kp N9    	&kp MINUS &kp BSLH
+				&kp LCTRL  	&kp AMPS		&kp COLON		&kp TILDE		&kp CARET &trans	&kp END  	&kp N4  &kp N5  	&kp N6    	&kp PG_UP &kp LA(BSLH)
+				&kp LSHFT 	&trans    	&trans			&trans			&trans		&trans	&kp HOME  &kp N1  &kp N2  	&kp N3 			&kp PG_DN &kp LA(RET)
+				&kp LCTRL  	&none 			&trans 		  &trans			&trans		&trans	&kp LALT	&lt N0	&kp DOT		&kp EQUAL 	&kp RET 	&kp RCTRL
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
 		};
 
 		raise {
+			// -----------------------------------------------------------------------------------------
+			// | trans |  F1	|  F2   |  F3   |  F4   |  --  |  --		|  (    |  )   |  {   |   }   | --  |
+			// | trans |  F5	|  F6   |  F7   |  F8   |  --  |  --		|  LEFT | DOWN |  UP  | RIGHT | --  |
+			// | trans |  F9	|  F10  |  F11  |  F12  |  --  |  --		|  --  	|  [   |  ]   | --    | --  |
+			// | trans |  --	|  --   |  --   |  --   | ____ |  ____  |  --	 	|  --  |	 --	 | --		 | QWERTY
 			bindings = <
-				&kp GRAVE &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp BSPC
-				&kp DEL &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp MINUS &kp EQUAL &kp LBKT &kp RBKT &kp BSLH
-				&trans &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12 &kp HASH &kp BSLH &kp PG_UP &kp PG_DN &trans
-				&trans &trans &trans &trans &mo 3 &trans &trans &trans &kp C_NEXT &kp C_VOL_DN &kp C_VOL_UP &kp C_PP
+				&trans &kp F1 	&kp F2		&kp F3 		&kp F4 		&trans	&trans &kp LPAR &kp RPAR  	&kp LBRC    &kp RBRC 	&trans
+				&trans &kp F5		&kp F6		&kp F7		&kp F8 		&trans	&trans &kp LEFT &kp DOWN  	&kp UP    	&kp RIGHT &trans
+				&trans &kp F9   &kp F10		&kp F11		&kp F12		&trans	&trans &kp N1  	&kp LBKT  	&kp RBKT 		&kp PG_DN &trans
+				&trans &none 		&trans 		&trans		&trans		&trans	&trans &trans 	&trans 			&trans 			&trans 		&tl QWERTY
 			>;
 		};
 		
+		qwerty {
+			bindings = <
+				&kp ESC  		&kp Q    &kp W 			&kp E 		&kp R 		&kp T  					&kp Y   				&kp U  		&kp I     &kp O   &kp P    &kp BSPC
+				&kp LCTRL  	&kp A    &kp S 			&kp D 		&kp F 		&kp G  					&kp H   				&kp J  		&kp K     &kp L   &kp SEMI &kp SQT
+				&kp LSHFT 	&kp Z    &kp X 			&kp C 		&kp V 		&kp B  					&kp N   				&kp M  		&kp COMMA &kp DOT &kp BSLH &kp MINUS
+				&kp LCTRL  	&kp LGUI &kp LSHIFT &kp LCTRL &kp LALT	&lt LOWER SPACE	&lt RAISE SPACE	&kp RET		&kp LEFT 	&kp DOWN 	&kp UP 		&kp RIGHT
+			>;
+
+			sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
+		};
+
 		control {
 			bindings = <
 				&reset &bootloader &bt BT_CLR &bt BT_PRV &bt BT_NXT &trans &trans &trans &trans &trans &trans &trans
